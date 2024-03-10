@@ -1,0 +1,5 @@
+{{ include "common.deployment" (list . "nginx") }}
+---
+{{ include "common.service" (list . "nginx") }}
+---
+{{ include "common.ingress" (list . "nginx") }}

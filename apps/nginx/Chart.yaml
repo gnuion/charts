@@ -1,0 +1,17 @@
+apiVersion: 2
+description: A popular web server and reverse proxy.
+dependencies:
+  - name: common
+    version: ">=0.0.0-0"
+    repository: "file://../../libs/common" 
+maintainers:
+  - name: gnuion
+    email: gnu.ion@gmail.com
+name: nginx
+keywords:
+  - web
+  - proxy
+sources:
+  - https://github.com/gnuion/charts
+type: application
+version: 0.1.0-alpha

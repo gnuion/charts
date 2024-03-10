@@ -1,0 +1,12 @@
+nginx:
+  image:
+    repository: docker.io/nginx
+    tag: latest
+  ports:
+    - containerPort: 80
+      protocol: TCP
+  ingress:
+    isEnabled: true
+    host: nginx.self
+    tls:
+      isEnabled: false

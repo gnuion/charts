@@ -4,7 +4,7 @@ Ingress
 {{- define "common.ingress" }}
 {{- $context := index . 0 }}
 {{- $postfix := index . 1 }}
-{{ if index $context.Values $postfix "ingress" }}
+{{ if index $context.Values $postfix "ingress" "isEnabled" }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -26,9 +26,11 @@ spec:
             port:
               number: 80
         pathType: Prefix
+  {{- if index $context.Values $postfix "ingress" "tls" "isEnabled" }}
   tls:
   - hosts:
     - {{ index $context.Values $postfix "ingress" "host" }}
     secretName: {{ include "common.nameWithPostfix" . }}
+  {{- end }}
 {{- end }}
 {{ end }}
