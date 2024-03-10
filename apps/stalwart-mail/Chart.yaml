@@ -1,0 +1,16 @@
+apiVersion: 2
+description: A Rust written mail server
+dependencies:
+  - name: common
+    version: ">=0.0.0-0"
+    repository: "file://../../libs/common"
+maintainers:
+  - name: gnuion
+    email: gnu.ion@gmail.com
+name: stalwart-mail
+keywords:
+  - server
+sources:
+  - https://github.com/gnuion/charts
+type: application
+version: 0.1.0-alpha

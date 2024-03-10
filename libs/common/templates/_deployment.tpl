@@ -1,7 +1,7 @@
 {{/*
 Deployment
 */}}
-{{- define "common.old_deployment" }}
+{{- define "common.deployment" }}
 {{- $context := index . 0 }}
 {{- $postfix := index . 1 }}
 apiVersion: apps/v1
@@ -25,9 +25,10 @@ spec:
         args: ["while true;do sleep 5;done"]
         {{- end }}
         ports:
-        {{- range index $context.Values $postfix "ports" }}
-        - containerPort: {{ .containerPort }}
-          protocol: {{ .protocol }}
+        {{- range $key, $value := index $context.Values $postfix "ports" }}
+        - containerPort: {{ $value.containerPort }}
+          protocol: {{ $value.protocol }}
+          name: {{ $key }}
         {{- end }}
         {{- if index $context.Values $postfix "capabilities" }}
         securityContext:

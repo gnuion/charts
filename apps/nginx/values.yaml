@@ -1,12 +1,22 @@
-nginx:
+core:
   image:
+    # -- image repository 
     repository: docker.io/nginx
+    # -- image tag 
     tag: latest
   ports:
-    - containerPort: 80
+    http: 
+      # -- http port
+      port: 80
+      # -- container http port
+      containerPort: 80
+      # -- http uses TCP
       protocol: TCP
-  ingress:
-    isEnabled: true
-    host: nginx.self
-    tls:
-      isEnabled: false
+      # -- enable http service
+      enableService: true
+      # -- enable ingress for http
+      enableIngress: true
+      # -- ingress hostname
+      hostname: nginx.self
+      # -- ingress path
+      path: "/"
